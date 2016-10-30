@@ -13,34 +13,34 @@ import com.example.malumukendi.computermaster.R;
 /**
  * Created by Malu.Mukendi on 2016-08-18.
  */
-public class AddEmployees extends AppCompatActivity {
+public class AddDesigner extends AppCompatActivity {
     DataBaseHelper dataBaseHelper;
-    EditText empNum;
+    EditText desNum;
     EditText surname;
     EditText name;
     EditText address;
-    private Button empadd;
-    private Button empback;
+    private Button desadd;
+    private Button desback;
     String tempName;
     String tempNumber;
     String tempSurname;
     String tempAddress;
-    public AddEmployees(){}
+    public AddDesigner(){}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addemployee);
+        setContentView(R.layout.activity_adddesigner);
         dataBaseHelper = new DataBaseHelper(this);
-        empNum = (EditText) findViewById(R.id.emp_Number);
+        desNum = (EditText) findViewById(R.id.emp_Number);
         name = (EditText) findViewById(R.id.emp_Name);
         surname = (EditText) findViewById(R.id.emp_Surname);
         address = (EditText) findViewById(R.id.emp_Address);
-        empadd = (Button) findViewById(R.id.addEmpl);
-        empback = (Button) findViewById(R.id.backEmpl);
+        desadd = (Button) findViewById(R.id.addEmpl);
+        desback = (Button) findViewById(R.id.backEmpl);
         AddEmployeeData();
-        assert empback != null;
-        empback.setOnClickListener(new View.OnClickListener() {
+        assert desback != null;
+        desback.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), ShopActivity.class);
                 startActivity(i);
@@ -49,13 +49,13 @@ public class AddEmployees extends AppCompatActivity {
     }
     public void AddEmployeeData()
     {
-        empadd.setOnClickListener(
+        desadd.setOnClickListener(
                 new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v) {
                         tempName = name.getText().toString();
-                        tempNumber = empNum.getText().toString();
+                        tempNumber = desNum.getText().toString();
                         tempSurname = surname.getText().toString();
                         tempAddress = address.getText().toString();
                         if (tempName.matches("") || tempNumber.matches("") || tempSurname.matches("")|| tempAddress.matches("")) {
@@ -63,18 +63,18 @@ public class AddEmployees extends AppCompatActivity {
                         }
                         else {
                         boolean isItemInserted = dataBaseHelper.insertEmployeeData(
-                                empNum.getText().toString(),
+                                desNum.getText().toString(),
                                 name.getText().toString(),
                                 surname.getText().toString(),
                                 address.getText().toString());
                         if(isItemInserted == true)
                         {
-                            Toast.makeText(AddEmployees.this, "Employee Inserted Successfully", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(getApplicationContext(), EmployeesActivity.class);
+                            Toast.makeText(AddDesigner.this, "Designer Inserted Successfully", Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getApplicationContext(), DesignerActivity.class);
                             startActivity(i);
                         }
                         else
-                            Toast.makeText(AddEmployees.this, "Employee Not Inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddDesigner.this, "Designer Not Inserted", Toast.LENGTH_LONG).show();
                         }
                     }
                 }

@@ -5,16 +5,16 @@ import java.io.Serializable;
 /**
  * Created by Malu.Mukendi on 2016-08-15.
  */
-public class Items implements Serializable{
+public class Brands implements Serializable{
     private Long id;
     private String name;
     private String code;
     private String section;
 
-    public Items() {
+    public Brands() {
     }
 
-    public Items(Builder builder) {
+    public Brands(Builder builder) {
         id = builder.id;
         name = builder.name;
         code = builder.code;
@@ -62,22 +62,22 @@ public class Items implements Serializable{
             this.code = code;
             return this;
         }
-        public Builder copy(Items i){
+        public Builder copy(Brands i){
             this.name = i.name;
             this.code = i.code;
             this.id = i.id;
             this.section = i.section;
             return this;
         }
-        public Items build(){
-            return new Items(this);
+        public Brands build(){
+            return new Brands(this);
         }
     }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Items)) return false;
-        Items items = (Items) o;
+        if (!(o instanceof Brands)) return false;
+        Brands items = (Brands) o;
 
         return !(id != null ? !id.equals(items.id) : items.id != null);
     }

@@ -1,5 +1,4 @@
 package computerMaster.example.malumukendi.computermaster;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,7 @@ import com.example.malumukendi.computermaster.R;
 /**
  * Created by Malu.Mukendi on 2016-08-18.
  */
-public class EmployeesActivity extends AppCompatActivity {
+public class DesignerActivity extends AppCompatActivity {
     DataBaseHelper db;
     private Button addE;
     private Button updateE;
@@ -20,12 +19,12 @@ public class EmployeesActivity extends AppCompatActivity {
     private Button viewE;
     private Button CancelE;
     TextView textView;
-    public EmployeesActivity(){}
+    public DesignerActivity(){}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee);
+        setContentView(R.layout.activity_designer);
         db = new DataBaseHelper(this);
         addE = (Button) findViewById(R.id.addEmp);
         updateE = (Button) findViewById(R.id.updateEmp);
@@ -37,21 +36,21 @@ public class EmployeesActivity extends AppCompatActivity {
         assert addE != null;
         addE.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddEmployees.class);
+                Intent i = new Intent(getApplicationContext(), AddDesigner.class);
                 startActivity(i);
             }
         });
        assert updateE != null;
         updateE.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), DeleteEmployee.class);
+                Intent i = new Intent(getApplicationContext(), DeleteDesigner.class);
                 startActivity(i);
             }
         });
         assert deleteE != null;
         deleteE.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), DeleteEmployee.class);
+                Intent i = new Intent(getApplicationContext(), DeleteDesigner.class);
                 startActivity(i);
             }
         });

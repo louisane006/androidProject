@@ -8,17 +8,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
-import computerMaster.example.malumukendi.computermaster.domain.Items;
-import computerMaster.example.malumukendi.computermaster.repos.ItemRepo;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
+import computerMaster.example.malumukendi.computermaster.domain.Brands;
+import computerMaster.example.malumukendi.computermaster.repos.BrandsRepo;
 
 /**
  * Created by Malu.Mukendi on 2016-09-01.
  */
-public class ItemRepoImpl extends SQLiteOpenHelper implements ItemRepo {
+public class BrandsRepoImpl extends SQLiteOpenHelper implements BrandsRepo {
     public static final String TABLE_NAME = "Items";
     private SQLiteDatabase db;
 
@@ -42,15 +42,15 @@ public class ItemRepoImpl extends SQLiteOpenHelper implements ItemRepo {
             + COLUMN_SECTION + " TEXT NOT NULL , "
             + COLUMN_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT);";
 
-    public ItemRepoImpl(Context context) {
+    public BrandsRepoImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
     }
 
-    public ItemRepoImpl(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public BrandsRepoImpl(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
     @Override
-    public Items findById(Long id) {
+    public Brands findById(Long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 TABLE_NAME,
@@ -67,7 +67,7 @@ public class ItemRepoImpl extends SQLiteOpenHelper implements ItemRepo {
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            final Items items = new Items.Builder()
+            final Brands items = new Brands.Builder()
                     .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                     .code(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)))
@@ -79,7 +79,7 @@ public class ItemRepoImpl extends SQLiteOpenHelper implements ItemRepo {
         }
     }
     @Override
-    public Items save(Items entity) {
+    public Brands save(Brands entity) {
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
@@ -87,14 +87,14 @@ public class ItemRepoImpl extends SQLiteOpenHelper implements ItemRepo {
         values.put(COLUMN_CODE, entity.getCode());
         values.put(COLUMN_SECTION, entity.getSection());
         long id = db.insertOrThrow(TABLE_NAME, null, values);
-        Items insertedEntity = new Items.Builder()
+        Brands insertedEntity = new Brands.Builder()
                 .copy(entity)
                 .id(new Long(id))
                 .build();
         return insertedEntity;
     }
     @Override
-    public Items update(Items entity) {
+    public Brands update(Brands entity) {
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
@@ -110,7 +110,7 @@ public class ItemRepoImpl extends SQLiteOpenHelper implements ItemRepo {
         return entity;
     }
     @Override
-    public Items delete(Items entity) {
+    public Brands delete(Brands entity) {
         open();
         db.delete(
                 TABLE_NAME,
@@ -119,14 +119,14 @@ public class ItemRepoImpl extends SQLiteOpenHelper implements ItemRepo {
         return entity;
     }
     @Override
-    public Set<Items> findAll() {
+    public Set<Brands> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Items> item = new HashSet<>();
+        Set<Brands> item = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
             do {
-                final Items i = new Items.Builder()
+                final Brands i = new Brands.Builder()
                         .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                         .code(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)))

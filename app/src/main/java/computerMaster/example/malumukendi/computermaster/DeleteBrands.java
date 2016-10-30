@@ -13,7 +13,7 @@ import com.example.malumukendi.computermaster.R;
 /**
  * Created by Malu.Mukendi on 2016-08-19.
  */
-public class DeleteItem extends AppCompatActivity {
+public class DeleteBrands extends AppCompatActivity {
     DataBaseHelper dataBaseHelper;
     EditText name;
     EditText code;
@@ -29,7 +29,7 @@ public class DeleteItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deleteitem);
+        setContentView(R.layout.activity_deletebrands);
         dataBaseHelper = new DataBaseHelper(this);
         Iback = (Button) findViewById(R.id.cancel_item);
         name = (EditText) findViewById(R.id.i_name);
@@ -43,7 +43,7 @@ public class DeleteItem extends AppCompatActivity {
         assert Iback != null;
         Iback.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ItemsActivity.class);
+                Intent i = new Intent(getApplicationContext(), BrandsActivity.class);
                 startActivity(i);
             }
         });
@@ -57,12 +57,12 @@ public class DeleteItem extends AppCompatActivity {
                         Integer deletedUser = dataBaseHelper.deleteItemData(IID.getText().toString());
                         if(deletedUser > 0)
                         {
-                            Toast.makeText(DeleteItem.this, "Item deleted Successfully", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(getApplicationContext(), ItemsActivity.class);
+                            Toast.makeText(DeleteBrands.this, "Item deleted Successfully", Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getApplicationContext(), BrandsActivity.class);
                             startActivity(i);
                         }
                         else
-                            Toast.makeText(DeleteItem.this, "Item Not deleted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DeleteBrands.this, "Item Not deleted", Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -84,11 +84,11 @@ public class DeleteItem extends AppCompatActivity {
                                     , code.getText().toString()
                                     , section.getText().toString());
                             if (isUpdate == true) {
-                                Toast.makeText(DeleteItem.this, "Item Updated Successfully", Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(getApplicationContext(), ItemsActivity.class);
+                                Toast.makeText(DeleteBrands.this, "Item Updated Successfully", Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(getApplicationContext(), BrandsActivity.class);
                                 startActivity(i);
                             } else
-                                Toast.makeText(DeleteItem.this, "Item Not Updated", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DeleteBrands.this, "Item Not Updated", Toast.LENGTH_LONG).show();
                         }
                     }
                 }

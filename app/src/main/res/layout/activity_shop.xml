@@ -24,7 +24,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manage Employees"
+        android:text="Manage Designers"
         android:id="@+id/employee"
         android:background="#985656"
         android:layout_below="@+id/item"
@@ -37,7 +37,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manage Items"
+        android:text="Manage brands"
         android:id="@+id/item"
         android:background="#fda2a2"
         android:layout_below="@+id/customer"

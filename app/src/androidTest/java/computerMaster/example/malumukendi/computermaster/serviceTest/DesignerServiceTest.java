@@ -5,26 +5,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import computerMaster.example.malumukendi.computermaster.conf.databases.GlobalContext;
-import computerMaster.example.malumukendi.computermaster.domain.Employee;
-import computerMaster.example.malumukendi.computermaster.factory.EmployeeFactory;
-import computerMaster.example.malumukendi.computermaster.repos.Impl.EmployeeRepoImpl;
-import computerMaster.example.malumukendi.computermaster.service.EmployeeService.impl.EmployeeServiceImpl;
+
 import junit.framework.Assert;
 import junit.framework.TestCase;
+
 import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import computerMaster.example.malumukendi.computermaster.conf.databases.GlobalContext;
+import computerMaster.example.malumukendi.computermaster.domain.Designer;
+import computerMaster.example.malumukendi.computermaster.factory.EmployeeFactory;
+import computerMaster.example.malumukendi.computermaster.repos.Impl.DesignerRepoImpl;
+import computerMaster.example.malumukendi.computermaster.service.DesignerService.impl.EmployeeServiceImpl;
+
 /**
  * Created by Malu.Mukendi on 2016-09-01.
  */
-public class EmployeeServiceTest extends TestCase {
+public class DesignerServiceTest extends TestCase {
     private static final String TAG="EMPLOYEE TEST1";
     private Long id;
     private EmployeeServiceImpl employeeService;
-    EmployeeRepoImpl employeeRepo;
+    DesignerRepoImpl employeeRepo;
     private boolean isBound;
     private ServiceConnection connection = new ServiceConnection() {
         @Override
@@ -54,25 +58,25 @@ public class EmployeeServiceTest extends TestCase {
         values.put("name","Louise");
         values.put("surname", "Malu");
         values.put("address", "Plumstead");
-        Employee employee = EmployeeFactory.createEmployee(values);
+        Designer employee = EmployeeFactory.createEmployee(values);
         assertNotNull(employee);
-        Employee insertedEntity = employeeRepo.save(employee);
+        Designer insertedEntity = employeeRepo.save(employee);
         id=insertedEntity.getIdentification();
         org.junit.Assert.assertNotNull(TAG+" CREATE",insertedEntity);
         //READ ALL
-        Set<Employee> books = employeeService.findAll();
+        Set<Designer> books = employeeService.findAll();
         Assert.assertTrue(TAG + " READ ALL", books.size() > 0);
         //READ ENTITY
-        Employee entity = employeeService.findById(id);
+        Designer entity = employeeService.findById(id);
         Assert.assertNotNull(TAG + " READ ENTITY", entity);
         //UPDATE ENTITY
-        Employee updateEntity = new Employee.Builder()
+        Designer updateEntity = new Designer.Builder()
                 .identification(entity.getIdentification())
                 .copy(entity)
                 .address("Cape Town")
                 .build();
         employeeService.update(updateEntity);
-        Employee newEntity = employeeService.findById(id);
+        Designer newEntity = employeeService.findById(id);
         Assert.assertEquals(TAG + " UPDATE ENTITY", "Cape Town", newEntity.getAddress());
     }
 }

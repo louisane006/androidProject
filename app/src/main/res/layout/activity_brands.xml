@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="computerMaster.example.malumukendi.computermaster.ItemsActivity"
+    tools:context="computerMaster.example.malumukendi.computermaster.BrandsActivity"
     android:background="@drawable/images6">
 
     <TextView
@@ -18,7 +18,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Item"
+        android:text="Add Brands"
         android:id="@+id/addItems"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
@@ -29,7 +29,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update Item"
+        android:text="Update Brands"
         android:id="@+id/updateItems"
         android:layout_below="@+id/addItems"
         android:layout_alignParentLeft="true"
@@ -40,7 +40,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete Item"
+        android:text="Delete Brands"
         android:id="@+id/deleteItems"
         android:layout_below="@+id/updateItems"
         android:layout_alignParentLeft="true"
@@ -51,7 +51,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Item"
+        android:text="View Brands"
         android:id="@+id/viewItems"
         android:layout_below="@+id/deleteItems"
         android:layout_alignParentLeft="true"

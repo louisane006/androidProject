@@ -40,14 +40,14 @@ public class ShopActivity extends AppCompatActivity {
        assert employeeBtn != null;
         employeeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EmployeesActivity.class);
+                Intent i = new Intent(getApplicationContext(), DesignerActivity.class);
                 startActivity(i);
             }
         });
         assert itemBtn != null;
         itemBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ItemsActivity.class);
+                Intent i = new Intent(getApplicationContext(), BrandsActivity.class);
                 startActivity(i);
             }
         });

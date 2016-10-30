@@ -52,31 +52,31 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="computerMaster.example.malumukendi.computermaster.EmployeesActivity">
+        <activity android:name="computerMaster.example.malumukendi.computermaster.DesignerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="computerMaster.example.malumukendi.computermaster.AddEmployees">
+        <activity android:name="computerMaster.example.malumukendi.computermaster.AddDesigner">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="computerMaster.example.malumukendi.computermaster.DeleteEmployee">
+        <activity android:name="computerMaster.example.malumukendi.computermaster.DeleteDesigner">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="computerMaster.example.malumukendi.computermaster.ItemsActivity">
+        <activity android:name="computerMaster.example.malumukendi.computermaster.BrandsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="computerMaster.example.malumukendi.computermaster.DeleteItem">
+        <activity android:name="computerMaster.example.malumukendi.computermaster.DeleteBrands">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -88,7 +88,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="computerMaster.example.malumukendi.computermaster.AddItems">
+        <activity android:name="computerMaster.example.malumukendi.computermaster.AddBrands">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />

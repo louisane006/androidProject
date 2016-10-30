@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Malu.Mukendi on 2016-08-18.
  */
-public class AddItems extends AppCompatActivity {
+public class AddBrands extends AppCompatActivity {
 
     DataBaseHelper dataBaseHelper;
     EditText code;
@@ -28,13 +28,13 @@ public class AddItems extends AppCompatActivity {
     Spinner section;
     String tempName;
     String tempCode;
-    public AddItems() {
+    public AddBrands() {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_additem);
+        setContentView(R.layout.activity_addbrand);
         dataBaseHelper = new DataBaseHelper(this);
         code = (EditText) findViewById(R.id.itemName);
         name = (EditText) findViewById(R.id.itemCode);
@@ -75,11 +75,11 @@ public class AddItems extends AppCompatActivity {
                                 name.getText().toString(),
                                 String.valueOf(section.getSelectedItem()));
                         if (isItemInserted == true) {
-                            Toast.makeText(AddItems.this, "Item Inserted Successfully", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(getApplicationContext(), ItemsActivity.class);
+                            Toast.makeText(AddBrands.this, "Item Inserted Successfully", Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getApplicationContext(), BrandsActivity.class);
                             startActivity(i);
                         } else
-                            Toast.makeText(AddItems.this, "Item Not Inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddBrands.this, "Item Not Inserted", Toast.LENGTH_LONG).show();
                     }
                     }
                 }

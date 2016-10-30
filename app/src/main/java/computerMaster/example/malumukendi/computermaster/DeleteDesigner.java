@@ -13,15 +13,15 @@ import com.example.malumukendi.computermaster.R;
 /**
  * Created by Malu.Mukendi on 2016-09-02.
  */
-public class DeleteEmployee extends AppCompatActivity {
+public class DeleteDesigner extends AppCompatActivity {
     DataBaseHelper dataBaseHelper;
     EditText number;
     EditText name;
     EditText surname;
     EditText address;
-    Button Empdelete;
+    Button desdelete;
     EditText EId;
-    Button Eback;
+    Button Dback;
     Button update;
     String id;
     String tempName;
@@ -32,41 +32,41 @@ public class DeleteEmployee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deleteemploy);
+        setContentView(R.layout.activity_deletedesigner);
         dataBaseHelper = new DataBaseHelper(this);
         number = (EditText) findViewById(R.id.e_num);
         name = (EditText) findViewById(R.id.employee_name);
         surname = (EditText) findViewById(R.id.employee_surname);
         address = (EditText) findViewById(R.id.employee_address);
-        Eback = (Button) findViewById(R.id.cancel_emp);
+        Dback = (Button) findViewById(R.id.cancel_emp);
         EId = (EditText) findViewById(R.id.emp_id);
-        Empdelete = (Button) findViewById(R.id.del_emp);
+        desdelete = (Button) findViewById(R.id.del_emp);
         update = (Button) findViewById(R.id.e_update);
         updateEmployees();
         deleteEmpData();
-        assert Eback != null;
-        Eback.setOnClickListener(new View.OnClickListener() {
+        assert Dback != null;
+        Dback.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EmployeesActivity.class);
+                Intent i = new Intent(getApplicationContext(), DesignerActivity.class);
                 startActivity(i);
             }
         });
     }
     public void deleteEmpData()
     {
-        Empdelete.setOnClickListener(
+        desdelete.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Integer deletedUser = dataBaseHelper.deleteEmployeeData(EId.getText().toString());
                         if(deletedUser > 0)
                         {
-                            Toast.makeText(DeleteEmployee.this, "Employee deleted Successfully", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(getApplicationContext(), EmployeesActivity.class);
+                            Toast.makeText(DeleteDesigner.this, "Designer deleted Successfully", Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getApplicationContext(), DesignerActivity.class);
                             startActivity(i);
                         }
                         else
-                            Toast.makeText(DeleteEmployee.this, "Employee Not deleted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DeleteDesigner.this, "Designer Not deleted", Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -91,11 +91,11 @@ public class DeleteEmployee extends AppCompatActivity {
                                     , surname.getText().toString()
                                     , address.getText().toString());
                             if (isUpdate == true) {
-                                Toast.makeText(DeleteEmployee.this, "Employee Updated Successfully", Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(getApplicationContext(), EmployeesActivity.class);
+                                Toast.makeText(DeleteDesigner.this, "Designer Updated Successfully", Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(getApplicationContext(), DesignerActivity.class);
                                 startActivity(i);
                             } else
-                                Toast.makeText(DeleteEmployee.this, "Employee Not Updated", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DeleteDesigner.this, "Designer Not Updated", Toast.LENGTH_LONG).show();
                         }
                     }
                 }

@@ -2,11 +2,6 @@ package computerMaster.example.malumukendi.computermaster.repositoriesTest;
 
 import android.test.AndroidTestCase;
 
-import computerMaster.example.malumukendi.computermaster.domain.Employee;
-import computerMaster.example.malumukendi.computermaster.factory.EmployeeFactory;
-import computerMaster.example.malumukendi.computermaster.repos.EmployeeRepo;
-import computerMaster.example.malumukendi.computermaster.repos.Impl.EmployeeRepoImpl;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,45 +9,50 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import computerMaster.example.malumukendi.computermaster.domain.Designer;
+import computerMaster.example.malumukendi.computermaster.factory.EmployeeFactory;
+import computerMaster.example.malumukendi.computermaster.repos.DesignerRepo;
+import computerMaster.example.malumukendi.computermaster.repos.Impl.DesignerRepoImpl;
+
 /**
  * Created by Malu.Mukendi on 2016-09-01.
  */
-public class EmployeeRepoTest  extends AndroidTestCase {
+public class DesignerRepoTest extends AndroidTestCase {
     private static final String TAG="EMPLOYEE TEST";
     private Long id;
     @Test
     public void testCreateReadUpdateDelete() throws Exception {
-        EmployeeRepo repo = new EmployeeRepoImpl(this.getContext());
+        DesignerRepo repo = new DesignerRepoImpl(this.getContext());
         Map<String,String> values = new HashMap<String,String>();
         values.put("name","Louise");
         values.put("surname", "Malu");
         values.put("address", "Plumstead");
-        Employee employee = EmployeeFactory.createEmployee(values);
+        Designer employee = EmployeeFactory.createEmployee(values);
         assertNotNull(employee);
-        Employee insertedEntity = repo.save(employee);
+        Designer insertedEntity = repo.save(employee);
         id=insertedEntity.getIdentification();
         Assert.assertNotNull(TAG+" CREATE",insertedEntity);
 
-        Set<Employee> employees = repo.findAll();
+        Set<Designer> employees = repo.findAll();
         Assert.assertTrue(TAG+" READ ALL",employees.size()>0);
 
         //READ ENTITY
-        Employee entity = repo.findById(id);
+        Designer entity = repo.findById(id);
         Assert.assertNotNull(TAG+" READ ENTITY",entity);
 
         //UPDATE ENTITY
-        Employee updateEntity = new Employee.Builder()
+        Designer updateEntity = new Designer.Builder()
                 .identification(entity.getIdentification())
                 .copy(entity)
                 .address("Cape Town")
                 .build();
         repo.update(updateEntity);
-        Employee newEntity = repo.findById(id);
+        Designer newEntity = repo.findById(id);
         Assert.assertEquals(TAG+ " UPDATE ENTITY","Cape Town",newEntity.getAddress());
 
         // DELETE ENTITY
         repo.delete(updateEntity);
-        Employee deletedEntity = repo.findById(id);
+        Designer deletedEntity = repo.findById(id);
         Assert.assertNull(TAG+" DELETE",deletedEntity);
     }
 }

@@ -5,27 +5,25 @@ import java.io.Serializable;
 /**
  * Created by Malu.Mukendi on 2016-08-14.
  */
-public class Employee implements Serializable {
+public class Designer implements Serializable {
 
     private Long id;
     private String name;
     private String surname;
     private String address;
-    public Employee(){}
+    public Designer(){}
 
-    public Employee(Builder b){
+    public Designer(Builder b){
         name = b.name;
         surname = b.surname;
         address = b.address;
         id = b.id;
-        //shop = b.shop;
     }
     public static class Builder{
          Long id;
          String name;
          String surname;
          String address;
-         //List<Shop> shop;
         public Builder() {
         }
         public Builder name(String name){
@@ -44,20 +42,15 @@ public class Employee implements Serializable {
             this.address = address;
             return this;
         }
-        /*public Builder shop(List<Shop> shop) {
-            this.shop = shop;
-            return this;
-        }*/
-        public Builder copy(Employee value) {
+        public Builder copy(Designer value) {
             this.id = value.id;
             this.name = value.name;
             this.surname = value.surname;
             this.address = value.address;
-            //this.shop = value.shop;
             return  this;
         }
-        public Employee build(){
-            return new Employee(this);
+        public Designer build(){
+            return new Designer(this);
         }
     }
     public Long getIdentification() {
@@ -72,7 +65,5 @@ public class Employee implements Serializable {
     public String getAddress() {
         return address;
     }
-    //public List<Shop> getShop() {
-        //return shop;
-   // }
+
 }

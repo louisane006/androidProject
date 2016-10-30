@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="computerMaster.example.malumukendi.computermaster.EmployeesActivity"
+    tools:context="computerMaster.example.malumukendi.computermaster.DesignerActivity"
     android:background="@drawable/images">
 
     <TextView
@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Employee"
+        android:text="Add Designer"
         android:id="@+id/addEmp"
         android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
@@ -31,7 +31,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update Employee"
+        android:text="Update Designer"
         android:id="@+id/updateEmp"
         android:layout_below="@+id/addEmp"
         android:layout_alignParentLeft="true"
@@ -42,7 +42,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete Employee"
+        android:text="Delete Designer"
         android:id="@+id/deleteEmp"
         android:layout_below="@+id/updateEmp"
         android:layout_alignParentLeft="true"
@@ -53,7 +53,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Employee"
+        android:text="View Designer"
         android:id="@+id/viewEmp"
         android:layout_below="@+id/deleteEmp"
         android:layout_alignParentLeft="true"
