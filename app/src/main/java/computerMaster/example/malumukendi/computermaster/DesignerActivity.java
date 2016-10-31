@@ -1,4 +1,5 @@
 package computerMaster.example.malumukendi.computermaster;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.malumukendi.computermaster.R;
+
+import java.util.ArrayList;
+import java.util.Set;
+
+import computerMaster.example.malumukendi.computermaster.domain.Designer;
+import computerMaster.example.malumukendi.computermaster.repos.Impl.DesignerRepoImpl;
 
 /**
  * Created by Malu.Mukendi on 2016-08-18.
@@ -31,8 +38,8 @@ public class DesignerActivity extends AppCompatActivity {
         deleteE = (Button) findViewById(R.id.deleteEmp);
         viewE = (Button) findViewById(R.id.viewEmp);
         CancelE = (Button) findViewById(R.id.cancelEmp);
-        textView = (TextView) findViewById(R.id.textView25);
-        viewEmployees();
+
+        viewDesigners();
         assert addE != null;
         addE.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -62,13 +69,23 @@ public class DesignerActivity extends AppCompatActivity {
             }
         });
     }
-    public void viewEmployees()
+    public void viewDesigners()
     {
         viewE.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        db.viewEmployees(textView);
+                        //db.viewEmployees(textView);
+                        DesignerRepoImpl repo = new DesignerRepoImpl(getApplicationContext());
+                        Set<Designer> designers;
+                        designers =   repo.findAll();
+                        ArrayList<String> names = new ArrayList<String>();
+
+                        for (Designer designer : designers)
+                        {
+                            names.add( designer.getIdentification()+ " " + designer.getName() + " "+ designer.getSurname());
+                        }
+                        textView = (TextView) findViewById(R.id.textView25);
                     }
                 }
         );

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.malumukendi.computermaster.R;
+import com.example.malumukendi.computermaster.*;
 
 /**
  * Created by Malu.Mukendi on 2016-08-18.

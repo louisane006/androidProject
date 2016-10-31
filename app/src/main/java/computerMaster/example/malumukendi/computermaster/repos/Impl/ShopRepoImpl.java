@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
+import computerMaster.example.malumukendi.computermaster.domain.Designer;
 import computerMaster.example.malumukendi.computermaster.domain.Shop;
 import computerMaster.example.malumukendi.computermaster.repos.ShopRepo;
 
@@ -103,7 +104,7 @@ public class ShopRepoImpl extends SQLiteOpenHelper implements ShopRepo {
         return entity;
     }
     @Override
-    public Shop delete(Shop entity) {
+    public Designer delete(Shop entity) {
         open();
         db.delete(
                 TABLE_NAME,

@@ -13,13 +13,14 @@ import java.util.Set;
 
 import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
 import computerMaster.example.malumukendi.computermaster.domain.Brands;
+import computerMaster.example.malumukendi.computermaster.domain.Designer;
 import computerMaster.example.malumukendi.computermaster.repos.BrandsRepo;
 
 /**
  * Created by Malu.Mukendi on 2016-09-01.
  */
 public class BrandsRepoImpl extends SQLiteOpenHelper implements BrandsRepo {
-    public static final String TABLE_NAME = "Items";
+    public static final String TABLE_NAME = "Brands";
     private SQLiteDatabase db;
 
     public static final String COLUMN_ID = "id";
@@ -67,13 +68,13 @@ public class BrandsRepoImpl extends SQLiteOpenHelper implements BrandsRepo {
                 null,
                 null);
         if (cursor.moveToFirst()) {
-            final Brands items = new Brands.Builder()
+            final Brands brands = new Brands.Builder()
                     .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .name(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)))
                     .code(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)))
                     .section(cursor.getString(cursor.getColumnIndex(COLUMN_SECTION)))
                     .build();
-            return items;
+            return brands;
         } else {
             return null;
         }
@@ -110,7 +111,7 @@ public class BrandsRepoImpl extends SQLiteOpenHelper implements BrandsRepo {
         return entity;
     }
     @Override
-    public Brands delete(Brands entity) {
+    public Designer delete(Brands entity) {
         open();
         db.delete(
                 TABLE_NAME,
@@ -121,7 +122,7 @@ public class BrandsRepoImpl extends SQLiteOpenHelper implements BrandsRepo {
     @Override
     public Set<Brands> findAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Set<Brands> item = new HashSet<>();
+        Set<Brands> brand = new HashSet<>();
         open();
         Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
         if (cursor.moveToFirst()) {
@@ -132,10 +133,10 @@ public class BrandsRepoImpl extends SQLiteOpenHelper implements BrandsRepo {
                         .code(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)))
                         .section(cursor.getString(cursor.getColumnIndex(COLUMN_SECTION)))
                         .build();
-                item.add(i);
+                brand.add(i);
             } while (cursor.moveToNext());
         }
-        return item;
+        return brand;
     }
     @Override
     public int deleteAll() {

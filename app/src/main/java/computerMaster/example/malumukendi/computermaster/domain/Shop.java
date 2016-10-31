@@ -27,7 +27,6 @@ public class Shop implements Serializable {
 
     public Shop(Builder builder) {
         this.address = builder.address;
-       // this.employee = builder.employee;
         this.id = builder.id;
         this.name =  builder.name;
     }

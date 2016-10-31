@@ -1,8 +1,8 @@
 package computerMaster.example.malumukendi.computermaster;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,15 +10,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.malumukendi.computermaster.R;
+import com.example.malumukendi.computermaster.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import computerMaster.example.malumukendi.computermaster.domain.Brands;
+import computerMaster.example.malumukendi.computermaster.factory.BrandsFactory;
+import computerMaster.example.malumukendi.computermaster.repos.BrandsRepo;
+import computerMaster.example.malumukendi.computermaster.repos.Impl.BrandsRepoImpl;
 
 /**
  * Created by Malu.Mukendi on 2016-08-18.
- */
-public class AddBrands extends AppCompatActivity {
+ */public class AddBrands extends Activity {
 
     DataBaseHelper dataBaseHelper;
     EditText code;
@@ -59,7 +65,7 @@ public class AddBrands extends AppCompatActivity {
             }
         });
     }
-    public void AddItemData() {
+    /*public void AddItemData() {
         itemadd.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -81,6 +87,39 @@ public class AddBrands extends AppCompatActivity {
                         } else
                             Toast.makeText(AddBrands.this, "Item Not Inserted", Toast.LENGTH_LONG).show();
                     }
+                    }
+                }
+        );
+    }*/
+    public void AddItemData() {
+        itemadd.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        BrandsRepo repo = new BrandsRepoImpl(getApplicationContext());
+                        tempName = name.getText().toString();
+                        tempCode = code.getText().toString();
+
+                        Map<String, String> values = new HashMap<>();
+                        String.valueOf(section.getSelectedItem());
+                        values.put("code", code.getText().toString());
+                        values.put("name", name.getText().toString());
+                        values.put("section", String.valueOf(section.getSelectedItem()));
+
+                        if (tempName.matches("") || tempCode.matches("")) {
+                            Toast.makeText(getApplicationContext(), "You cannot save blank values", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Brands brands = BrandsFactory.createItem(values);
+                            if (brands != null) {
+                                repo.save(brands);
+                                Toast.makeText(AddBrands.this, "Item Inserted Successfully", Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(getApplicationContext(), CustomerActivity.class);
+                                startActivity(i);
+                            }
+                            else
+                                Toast.makeText(AddBrands.this, "Item Not Inserted", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
         );

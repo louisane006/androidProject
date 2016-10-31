@@ -1,7 +1,5 @@
 package computerMaster.example.malumukendi.computermaster.domain;
 
-import computerMaster.example.malumukendi.computermaster.factory.ItemFactory;
-
 import junit.framework.TestCase;
 
 import org.junit.Assert;
@@ -10,12 +8,14 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import computerMaster.example.malumukendi.computermaster.factory.BrandsFactory;
+
 /**
  * Created by Malu.Mukendi on 2016-08-15.
  */
-public class ItemFactoryTest extends TestCase {
+public class BrandsFactoryTest extends TestCase {
 
-    public ItemFactoryTest() {
+    public BrandsFactoryTest() {
     }
     @Test
     public void testCreate() {
@@ -23,7 +23,7 @@ public class ItemFactoryTest extends TestCase {
         values.put("name", "Laptop");
         values.put("code", "LP500");
         values.put("section", "PCs");
-        Items i = ItemFactory.createItem(values);
+        Brands i = BrandsFactory.createItem(values);
         Assert.assertEquals("Laptop", i.getName());
         Assert.assertEquals("LP500", i.getCode());
         Assert.assertEquals("PCs", i.getSection());
@@ -34,8 +34,8 @@ public class ItemFactoryTest extends TestCase {
         values.put("name", "Laptop");
         values.put("code", "LP500");
         values.put("section", "PCs");
-        Items item = ItemFactory.createItem(values);
-        Items newItem = (new Items.Builder().copy(item).code("LP700").build());
+        Brands item = BrandsFactory.createItem(values);
+        Brands newItem = (new Brands.Builder().copy(item).code("LP700").build());
         Assert.assertEquals("Laptop", newItem.getName());
         Assert.assertEquals("LP700", newItem.getCode());
         Assert.assertEquals("PCs", newItem.getSection());

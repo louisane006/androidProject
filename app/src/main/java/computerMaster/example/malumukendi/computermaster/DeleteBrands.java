@@ -54,6 +54,7 @@ public class DeleteBrands extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         Integer deletedUser = dataBaseHelper.deleteItemData(IID.getText().toString());
                         if(deletedUser > 0)
                         {

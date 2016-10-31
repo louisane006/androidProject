@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 import computerMaster.example.malumukendi.computermaster.domain.Designer;
-import computerMaster.example.malumukendi.computermaster.factory.EmployeeFactory;
+import computerMaster.example.malumukendi.computermaster.factory.DesignerFactory;
 import computerMaster.example.malumukendi.computermaster.repos.DesignerRepo;
 import computerMaster.example.malumukendi.computermaster.repos.Impl.DesignerRepoImpl;
 
@@ -27,7 +27,7 @@ public class DesignerRepoTest extends AndroidTestCase {
         values.put("name","Louise");
         values.put("surname", "Malu");
         values.put("address", "Plumstead");
-        Designer employee = EmployeeFactory.createEmployee(values);
+        Designer employee = DesignerFactory.createEmployee(values);
         assertNotNull(employee);
         Designer insertedEntity = repo.save(employee);
         id=insertedEntity.getIdentification();

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
+import computerMaster.example.malumukendi.computermaster.domain.Designer;
 import computerMaster.example.malumukendi.computermaster.domain.User;
 import computerMaster.example.malumukendi.computermaster.repos.UserLoginRepo;
 import java.util.HashSet;
@@ -108,7 +109,7 @@ public class UserLoginRepoImpl extends SQLiteOpenHelper implements UserLoginRepo
         return entity;
     }
     @Override
-    public User delete(User entity) {
+    public Designer delete(User entity) {
         open();
         db.delete(
                 TABLE_NAME,

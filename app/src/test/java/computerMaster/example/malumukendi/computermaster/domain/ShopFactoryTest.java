@@ -1,7 +1,5 @@
 package computerMaster.example.malumukendi.computermaster.domain;
 
-import computerMaster.example.malumukendi.computermaster.factory.ShopFactory;
-
 import junit.framework.TestCase;
 
 import org.junit.Assert;
@@ -10,11 +8,13 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 
+import computerMaster.example.malumukendi.computermaster.factory.ShopFactory;
+
 /**
  * Created by Malu.Mukendi on 2016-08-15.
  */
 public class ShopFactoryTest extends TestCase {
-    List<Employee> e;
+    List<Designer> e;
     public ShopFactoryTest() {
     }
     @Test

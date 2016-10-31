@@ -8,12 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
-import computerMaster.example.malumukendi.computermaster.domain.Customer;
-import computerMaster.example.malumukendi.computermaster.repos.CustomerRepo;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
+import computerMaster.example.malumukendi.computermaster.domain.Customer;
+import computerMaster.example.malumukendi.computermaster.domain.Designer;
+import computerMaster.example.malumukendi.computermaster.repos.CustomerRepo;
 
 /**
  * Created by Malu.Mukendi on 2016-06-06.
@@ -103,7 +104,7 @@ public class CustomerRepoImpl extends SQLiteOpenHelper implements CustomerRepo {
                 .build();
         return insertedEntity;
     }
-    public boolean insertEmployeeData(String number, String name, String surname, String address) {
+   /* public boolean insertEmployeeData(String number, String name, String surname, String address) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("number", number);
@@ -116,7 +117,7 @@ public class CustomerRepoImpl extends SQLiteOpenHelper implements CustomerRepo {
             return false;
         else
             return true;
-    }
+    }*/
     public Customer update(Customer entity){
         open();
         ContentValues values = new ContentValues();
@@ -133,7 +134,7 @@ public class CustomerRepoImpl extends SQLiteOpenHelper implements CustomerRepo {
         return entity;
     }
     @Override
-    public Customer delete(Customer entity) {
+    public Designer delete(Customer entity) {
         open();
         db.delete(
                 TABLE_NAME,

@@ -2,6 +2,8 @@ package computerMaster.example.malumukendi.computermaster.repos;
 
 import java.util.Set;
 
+import computerMaster.example.malumukendi.computermaster.domain.Designer;
+
 /**
  * Created by Malu.Mukendi on 2016-06-06.
  */
@@ -13,7 +15,7 @@ public interface Repository<E, ID> {
 
     E update(E entity);
 
-    E delete(E entity);
+    Designer delete(E entity);
 
     Set<E> findAll();
 
