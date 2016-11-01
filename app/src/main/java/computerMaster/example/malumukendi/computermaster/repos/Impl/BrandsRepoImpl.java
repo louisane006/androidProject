@@ -13,7 +13,6 @@ import java.util.Set;
 
 import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
 import computerMaster.example.malumukendi.computermaster.domain.Brands;
-import computerMaster.example.malumukendi.computermaster.domain.Designer;
 import computerMaster.example.malumukendi.computermaster.repos.BrandsRepo;
 
 /**
@@ -45,10 +44,6 @@ public class BrandsRepoImpl extends SQLiteOpenHelper implements BrandsRepo {
 
     public BrandsRepoImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
-    }
-
-    public BrandsRepoImpl(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
     }
     @Override
     public Brands findById(Long id) {
@@ -111,7 +106,7 @@ public class BrandsRepoImpl extends SQLiteOpenHelper implements BrandsRepo {
         return entity;
     }
     @Override
-    public Designer delete(Brands entity) {
+    public Brands delete(Brands entity) {
         open();
         db.delete(
                 TABLE_NAME,

@@ -10,11 +10,18 @@ import android.widget.Toast;
 
 import com.example.malumukendi.computermaster.R;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import computerMaster.example.malumukendi.computermaster.domain.Brands;
+import computerMaster.example.malumukendi.computermaster.factory.BrandsFactory;
+import computerMaster.example.malumukendi.computermaster.repos.BrandsRepo;
+import computerMaster.example.malumukendi.computermaster.repos.Impl.BrandsRepoImpl;
+
 /**
  * Created by Malu.Mukendi on 2016-08-19.
  */
 public class DeleteBrands extends AppCompatActivity {
-    DataBaseHelper dataBaseHelper;
     EditText name;
     EditText code;
     EditText section;
@@ -30,7 +37,6 @@ public class DeleteBrands extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deletebrands);
-        dataBaseHelper = new DataBaseHelper(this);
         Iback = (Button) findViewById(R.id.cancel_item);
         name = (EditText) findViewById(R.id.i_name);
         code = (EditText) findViewById(R.id.i_code);
@@ -55,9 +61,15 @@ public class DeleteBrands extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        Integer deletedUser = dataBaseHelper.deleteItemData(IID.getText().toString());
-                        if(deletedUser > 0)
+                        BrandsRepo repo = new BrandsRepoImpl(getApplicationContext());
+                        Map<String, String> values = new HashMap<>();
+                        values.put("code", code.getText().toString());
+                        values.put("name", name.getText().toString());
+                        values.put("section", section.getText().toString());
+                        Brands brands = BrandsFactory.createItem(values);
+                        if(brands != null)
                         {
+                            repo.delete(brands);
                             Toast.makeText(DeleteBrands.this, "Item deleted Successfully", Toast.LENGTH_LONG).show();
                             Intent i = new Intent(getApplicationContext(), BrandsActivity.class);
                             startActivity(i);
@@ -74,19 +86,25 @@ public class DeleteBrands extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        BrandsRepo repo = new BrandsRepoImpl(getApplicationContext());
                         id = IID.getText().toString();
                         tempName = name.getText().toString();
                         tempCode = code.getText().toString();
+
+                        Map<String, String> values = new HashMap<>();
+                        values.put("code", code.getText().toString());
+                        values.put("name", name.getText().toString());
+                        values.put("section", section.getText().toString());
+                        Brands brands = BrandsFactory.createItem(values);
+
                         if (tempName.matches("") || tempCode.matches("") || id.matches("")) {
                             Toast.makeText(getApplicationContext(), "You cannot save blank values", Toast.LENGTH_LONG).show();
                         } else {
-                            boolean isUpdate = dataBaseHelper.updateItem(IID.getText().toString()
-                                    , name.getText().toString()
-                                    , code.getText().toString()
-                                    , section.getText().toString());
-                            if (isUpdate == true) {
+
+                            if (brands != null) {
+                                repo.update(brands);
                                 Toast.makeText(DeleteBrands.this, "Item Updated Successfully", Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(getApplicationContext(), BrandsActivity.class);
+                                Intent i = new Intent(getApplicationContext(), DesignerActivity.class);
                                 startActivity(i);
                             } else
                                 Toast.makeText(DeleteBrands.this, "Item Not Updated", Toast.LENGTH_LONG).show();

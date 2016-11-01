@@ -26,7 +26,6 @@ import computerMaster.example.malumukendi.computermaster.repos.Impl.BrandsRepoIm
  * Created by Malu.Mukendi on 2016-08-18.
  */public class AddBrands extends Activity {
 
-    DataBaseHelper dataBaseHelper;
     EditText code;
     EditText name;
     Button itemadd;
@@ -41,7 +40,6 @@ import computerMaster.example.malumukendi.computermaster.repos.Impl.BrandsRepoIm
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addbrand);
-        dataBaseHelper = new DataBaseHelper(this);
         code = (EditText) findViewById(R.id.itemName);
         name = (EditText) findViewById(R.id.itemCode);
         itemadd = (Button) findViewById(R.id.AddItem);
@@ -65,32 +63,6 @@ import computerMaster.example.malumukendi.computermaster.repos.Impl.BrandsRepoIm
             }
         });
     }
-    /*public void AddItemData() {
-        itemadd.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        tempName = name.getText().toString();
-                        tempCode = code.getText().toString();
-                        if (tempName.matches("") || tempCode.matches("")) {
-                            Toast.makeText(getApplicationContext(), "You cannot save blank values", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                        boolean isItemInserted = dataBaseHelper.insertItemData(
-                                code.getText().toString(),
-                                name.getText().toString(),
-                                String.valueOf(section.getSelectedItem()));
-                        if (isItemInserted == true) {
-                            Toast.makeText(AddBrands.this, "Item Inserted Successfully", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(getApplicationContext(), BrandsActivity.class);
-                            startActivity(i);
-                        } else
-                            Toast.makeText(AddBrands.this, "Item Not Inserted", Toast.LENGTH_LONG).show();
-                    }
-                    }
-                }
-        );
-    }*/
     public void AddItemData() {
         itemadd.setOnClickListener(
                 new View.OnClickListener() {

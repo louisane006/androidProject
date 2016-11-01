@@ -10,11 +10,18 @@ import android.widget.Toast;
 
 import com.example.malumukendi.computermaster.R;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import computerMaster.example.malumukendi.computermaster.domain.Customer;
+import computerMaster.example.malumukendi.computermaster.factory.CustomerFactory;
+import computerMaster.example.malumukendi.computermaster.repos.CustomerRepo;
+import computerMaster.example.malumukendi.computermaster.repos.Impl.CustomerRepoImpl;
+
 /**
  * Created by Malu.Mukendi on 2016-08-19.
  */
 public class DeleteCustomer extends AppCompatActivity {
-    DataBaseHelper dataBaseHelper;
     EditText number;
     EditText name;
     EditText surname;
@@ -31,7 +38,6 @@ public class DeleteCustomer extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delcust);
-        dataBaseHelper = new DataBaseHelper(this);
         custback = (Button) findViewById(R.id.cancel_Delete);
         number = (EditText) findViewById(R.id.c_number);
         name = (EditText) findViewById(R.id.c_name);
@@ -55,9 +61,16 @@ public class DeleteCustomer extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Integer deletedUser = dataBaseHelper.deleteCustData(cust_ID.getText().toString());
-                        if(deletedUser > 0)
+                        CustomerRepo repo = new CustomerRepoImpl(getApplicationContext());
+                        Map<String, String> values = new HashMap<>();
+                        values.put("number", number.getText().toString());
+                        values.put("name", name.getText().toString());
+                        values.put("surname", surname.getText().toString());
+                        Customer customer = CustomerFactory.createCustomer(values);
+
+                        if(customer != null)
                         {
+                            repo.delete(customer);
                             Toast.makeText(DeleteCustomer.this, "Customer deleted Successfully", Toast.LENGTH_LONG).show();
                             Intent i = new Intent(getApplicationContext(), CustomerActivity.class);
                             startActivity(i);
@@ -74,23 +87,28 @@ public class DeleteCustomer extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        CustomerRepo repo = new CustomerRepoImpl(getApplicationContext());
                         id = cust_ID.getText().toString();
                         tempName = name.getText().toString();
                         tempNumber = number.getText().toString();
                         tempSurname = surname.getText().toString();
+
+                        Map<String, String> values = new HashMap<>();
+                        values.put("number", number.getText().toString());
+                        values.put("name", name.getText().toString());
+                        values.put("surname", surname.getText().toString());
+
                         if (tempName.matches("") || tempNumber.matches("") || tempSurname.matches("") || id.matches("")) {
                             Toast.makeText(getApplicationContext(), "You cannot save blank values", Toast.LENGTH_LONG).show();
                         } else {
-                            boolean isUpdate = dataBaseHelper.updateCustomer(cust_ID.getText().toString()
-                                    , number.getText().toString()
-                                    , name.getText().toString()
-                                    , surname.getText().toString());
-                            if (isUpdate == true) {
+                            Customer cust = CustomerFactory.createCustomer(values);
+                            if (cust != null) {
+                                repo.update(cust);
                                 Toast.makeText(DeleteCustomer.this, "Customer Updated Successfully", Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(getApplicationContext(), CustomerActivity.class);
+                                Intent i = new Intent(getApplicationContext(), DesignerActivity.class);
                                 startActivity(i);
                             } else
-                                Toast.makeText(DeleteCustomer.this, "customer Not Updated", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DeleteCustomer.this, "Customer Not Updated", Toast.LENGTH_LONG).show();
                         }
                     }
                 }

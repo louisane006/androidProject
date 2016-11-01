@@ -7,12 +7,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
-import computerMaster.example.malumukendi.computermaster.domain.Designer;
-import computerMaster.example.malumukendi.computermaster.domain.User;
-import computerMaster.example.malumukendi.computermaster.repos.UserLoginRepo;
+
 import java.util.HashSet;
 import java.util.Set;
+
+import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
+import computerMaster.example.malumukendi.computermaster.domain.User;
+import computerMaster.example.malumukendi.computermaster.repos.UserLoginRepo;
 
 /**
  * Created by Malu.Mukendi on 2016-06-06.
@@ -43,10 +44,6 @@ public class UserLoginRepoImpl extends SQLiteOpenHelper implements UserLoginRepo
 
     public UserLoginRepoImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
-    }
-
-    public UserLoginRepoImpl(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
     }
     @Override
     public User findById(Long id) {
@@ -109,7 +106,7 @@ public class UserLoginRepoImpl extends SQLiteOpenHelper implements UserLoginRepo
         return entity;
     }
     @Override
-    public Designer delete(User entity) {
+    public User delete(User entity) {
         open();
         db.delete(
                 TABLE_NAME,

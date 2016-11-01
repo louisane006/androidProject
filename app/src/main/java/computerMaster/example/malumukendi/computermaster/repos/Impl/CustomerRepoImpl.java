@@ -13,7 +13,6 @@ import java.util.Set;
 
 import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
 import computerMaster.example.malumukendi.computermaster.domain.Customer;
-import computerMaster.example.malumukendi.computermaster.domain.Designer;
 import computerMaster.example.malumukendi.computermaster.repos.CustomerRepo;
 
 /**
@@ -104,20 +103,6 @@ public class CustomerRepoImpl extends SQLiteOpenHelper implements CustomerRepo {
                 .build();
         return insertedEntity;
     }
-   /* public boolean insertEmployeeData(String number, String name, String surname, String address) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("number", number);
-        contentValues.put("name", name);
-        contentValues.put("surname", surname);
-        contentValues.put("address", address);
-
-        long result = db.insert("employees", null, contentValues);
-        if (result == -1)
-            return false;
-        else
-            return true;
-    }*/
     public Customer update(Customer entity){
         open();
         ContentValues values = new ContentValues();
@@ -134,7 +119,7 @@ public class CustomerRepoImpl extends SQLiteOpenHelper implements CustomerRepo {
         return entity;
     }
     @Override
-    public Designer delete(Customer entity) {
+    public Customer delete(Customer entity) {
         open();
         db.delete(
                 TABLE_NAME,

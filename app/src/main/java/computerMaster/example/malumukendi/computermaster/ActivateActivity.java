@@ -16,7 +16,6 @@ import com.example.malumukendi.computermaster.R;
 
 public class ActivateActivity extends AppCompatActivity{
 
-    DataBaseHelper dataBaseHelper;
     EditText username;
     EditText emailAddress;
     EditText password;
@@ -33,7 +32,6 @@ public class ActivateActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activate);
-        dataBaseHelper = new DataBaseHelper(this);
         username = (EditText) findViewById(R.id.username);
         emailAddress = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);

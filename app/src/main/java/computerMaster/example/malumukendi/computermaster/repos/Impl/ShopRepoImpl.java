@@ -8,13 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
-import computerMaster.example.malumukendi.computermaster.domain.Designer;
-import computerMaster.example.malumukendi.computermaster.domain.Shop;
-import computerMaster.example.malumukendi.computermaster.repos.ShopRepo;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import computerMaster.example.malumukendi.computermaster.conf.databases.DBConstants;
+import computerMaster.example.malumukendi.computermaster.domain.Shop;
+import computerMaster.example.malumukendi.computermaster.repos.ShopRepo;
 
 /**
  * Created by Malu.Mukendi on 2016-06-06.
@@ -104,7 +103,7 @@ public class ShopRepoImpl extends SQLiteOpenHelper implements ShopRepo {
         return entity;
     }
     @Override
-    public Designer delete(Shop entity) {
+    public Shop delete(Shop entity) {
         open();
         db.delete(
                 TABLE_NAME,
